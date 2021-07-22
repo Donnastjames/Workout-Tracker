@@ -1,0 +1,9 @@
+{
+  "name": "workout-tracker",
+  "version": "1.0.0",
+  "description": "Workout Tracker application",
+  "scripts": {
+    "postinstall": "npm install --prefix ./Develop",
+    "start": "npm start --prefix ./Develop"
+  }
+}
