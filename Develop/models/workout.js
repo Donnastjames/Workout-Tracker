@@ -44,8 +44,11 @@ const WorkoutSchema = new Schema({
     type: Number,
     required: "Enter resistance duration in (minutes)"
   },
-  
-})
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
 
 const Workout = mongoose.model("Workout", WorkoutSchema);
 
