@@ -11,12 +11,12 @@ const WorkoutSchema = new Schema({
 
   distance: {
     type: Number,
-    required: "Enter distance in (miles)"
+    required: "Enter distance (miles)"
   },
 
   cardioDuration: {
     type: Number,
-    required: "Enter cardio duration in (minutes)"
+    required: "Enter cardio duration (minutes)"
   },
 
   resistanceName: {
@@ -27,7 +27,7 @@ const WorkoutSchema = new Schema({
 
   weight: {
     type: Number,
-    required: "Enter weight in (lbs)"
+    required: "Enter weight (lbs)"
   },
 
   sets: {
@@ -40,11 +40,12 @@ const WorkoutSchema = new Schema({
     require: "Enter number of reps"
   },
 
-  duration: {
+  resistanceDuration: {
     type: Number,
-    required: "Enter resistance duration in (minutes)"
+    required: "Enter resistance duration (minutes)"
   },
-  date: {
+  
+  workoutDate: {
     type: Date,
     default: Date.now
   }
