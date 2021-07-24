@@ -25,8 +25,5 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-router.get("/stats", (req, res) => {
-  res.json('foo');
-});
 
 module.exports = router;
