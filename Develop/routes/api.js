@@ -4,8 +4,8 @@ const Workout = require("../models/workout.js");
 router.post("/api/workouts", ({ body }, res) => {
   Workout
     .create(body)
-    .then(dbTransaction => {
-      res.json(dbTransaction);
+    .then(dbWorkout => {
+      res.json(dbWorkout);
     })
     .catch(err => {
       res.status(400).json(err);
@@ -13,15 +13,20 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 router.get("/api/workouts", (req, res) => {
+  console.log('GET /api/workouts CALLED!');
   Workout
     .find({})
-    .sort({ date: -7 })
+    // .sort({ date: -7 }) // Didn't work!
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
     .catch(err => {
       res.status(400).json(err);
     });
+});
+
+router.get("/stats", (req, res) => {
+  res.json('foo');
 });
 
 module.exports = router;
