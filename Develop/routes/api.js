@@ -21,6 +21,7 @@ router.put("/api/workouts/:id", (req, res) => {
         _id: req.params.id,
       },
       {
+        $set: { day: Date.now() },
         $push: { exercises: req.body },
       },
       (error, data) => {
