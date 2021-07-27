@@ -48,10 +48,22 @@ router.get("/api/workouts", (req, res) => {
 
 router.get("/api/workouts/range", (req, res) => {
   console.log('GET /api/workoutsInRange CALLED!');
+
   Workout
-    .find({})
+    .aggregate(
+      [
+        {
+          $addFields: {
+            totalDuration: {
+              $sum: "$exercises.duration",
+            },
+          },
+        },
+      ],
+    )
     .sort({ date: -1 })
     .then(dbWorkout => {
+      console.log('RANGE: dbWorkout:\n', JSON.stringify(dbWorkout, null, 2));
       res.json(dbWorkout);
     })
     .catch(err => {
