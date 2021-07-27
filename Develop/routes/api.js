@@ -13,8 +13,6 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 router.put("/api/workouts/:id", (req, res) => {
-  console.log('PUT /api/workouts/:id called with id:', req.params.id);
-  console.log('req.body:\n', JSON.stringify(req.body, null, 2));
   Workout
     .updateOne(
       {
@@ -34,7 +32,6 @@ router.put("/api/workouts/:id", (req, res) => {
 });
 
 router.get("/api/workouts", (req, res) => {
-  console.log('GET /api/workouts CALLED!');
   Workout
     .aggregate(
       [
@@ -49,7 +46,6 @@ router.get("/api/workouts", (req, res) => {
     )
     .sort({ date: -1 })
     .then(dbWorkout => {
-      console.log('dbWorkout:\n', JSON.stringify(dbWorkout, null, 2));
       res.json(dbWorkout);
     })
     .catch(err => {
@@ -58,8 +54,6 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.get("/api/workouts/range", (req, res) => {
-  console.log('GET /api/workoutsInRange CALLED!');
-
   Workout
     .aggregate(
       [
@@ -76,7 +70,6 @@ router.get("/api/workouts/range", (req, res) => {
     .limit(7)
     .sort({ day: 1 })
     .then(dbWorkout => {
-      console.log('RANGE: dbWorkout:\n', JSON.stringify(dbWorkout, null, 2));
       res.json(dbWorkout);
     })
     .catch(err => {
