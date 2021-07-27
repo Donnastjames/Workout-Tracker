@@ -72,7 +72,9 @@ router.get("/api/workouts/range", (req, res) => {
         },
       ],
     )
-    .sort({ date: -1 })
+    .sort({ day: -1 })
+    .limit(7)
+    .sort({ day: 1 })
     .then(dbWorkout => {
       console.log('RANGE: dbWorkout:\n', JSON.stringify(dbWorkout, null, 2));
       res.json(dbWorkout);
