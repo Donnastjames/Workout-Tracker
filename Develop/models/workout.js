@@ -46,11 +46,6 @@ const WorkoutSchema = new Schema({
       required: "Enter distance (miles)",
     },
   }],
-
-  totalDuration: {
-    type: Number,
-    default: 0,
-  },
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);

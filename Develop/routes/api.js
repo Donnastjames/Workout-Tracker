@@ -36,9 +36,20 @@ router.put("/api/workouts/:id", (req, res) => {
 router.get("/api/workouts", (req, res) => {
   console.log('GET /api/workouts CALLED!');
   Workout
-    .find({})
+    .aggregate(
+      [
+        {
+          $addFields: {
+            totalDuration: {
+              $sum: "$exercises.duration",
+            },
+          },
+        },
+      ],
+    )
     .sort({ date: -1 })
     .then(dbWorkout => {
+      console.log('dbWorkout:\n', JSON.stringify(dbWorkout, null, 2));
       res.json(dbWorkout);
     })
     .catch(err => {
