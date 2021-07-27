@@ -21,7 +21,6 @@ router.put("/api/workouts/:id", (req, res) => {
         _id: req.params.id,
       },
       {
-        $set: { day: Date.now() },
         $push: { exercises: req.body },
       },
       (error, data) => {
@@ -36,6 +35,19 @@ router.put("/api/workouts/:id", (req, res) => {
 
 router.get("/api/workouts", (req, res) => {
   console.log('GET /api/workouts CALLED!');
+  Workout
+    .find({})
+    .sort({ date: -1 })
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+router.get("/api/workouts/range", (req, res) => {
+  console.log('GET /api/workoutsInRange CALLED!');
   Workout
     .find({})
     .sort({ date: -1 })
