@@ -4,6 +4,7 @@
   "description": "Workout Tracker application",
   "scripts": {
     "postinstall": "npm install --prefix ./Develop",
+    "seed": "npm run seed --prefix ./Develop",
     "start": "npm start --prefix ./Develop"
   }
 }
